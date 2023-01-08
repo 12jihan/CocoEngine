@@ -11,7 +11,10 @@ project(CocoEngine VERSION 0.1.0)
 # message("\tdir: ${OPENGL_INCLUDE_DIR}")
 # message("\tlib: ${OPENGL_LIBRARIES} ")
 
-add_executable(${PROJECT_NAME} main.cpp external/glad/src/glad.c)
+add_executable(${PROJECT_NAME} 
+    main.cpp 
+    external/glad/src/glad.c
+)
 # find_package(OpenGL REQUIRED)
 add_subdirectory(
     external/glfw
@@ -30,5 +33,4 @@ target_link_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} 
     glfw
-    # glad
 )

@@ -7,27 +7,6 @@
 
 const GLuint WIDTH = 800, HEIGHT = 600;
 
-// Vertex Shader source code
-const char *vertexShaderSource = "#version 330 core\n"
-                                 "layout (location = 0) in vec3 aPos;\n"
-                                 "void main()\n"
-                                 "{\n"
-                                 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-                                 "}\0";
-// Fragment Shader source code
-const char *fragmentShaderSource = "#version 330 core\n"
-                                   "out vec4 FragColor;\n"
-                                   "void main()\n"
-                                   "{\n"
-                                   "   FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
-                                   "}\n\0";
-
-void key_callback(GLFWwindow *window, int key, int scancode, int action, int mode)
-{
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GL_TRUE);
-}
-
 int main(void)
 {
     glfwInit();
@@ -38,8 +17,6 @@ int main(void)
 
     GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "[glad] GL with GLFW", NULL, NULL);
     glfwMakeContextCurrent(window);
-
-    glfwSetKeyCallback(window, key_callback);
 
     while (!glfwWindowShouldClose(window))
     {
