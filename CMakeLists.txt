@@ -1,36 +1,35 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(CocoEngine VERSION 0.1.0)
-
-include(CTest)
-enable_testing()
-
-# Download all the submodules
-# find_package(Git QUIET)
-# if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
-#     #Update submodules as needed
-#     option(GIT_SUBMODULE "check submodules during build" ON)
-#     if(GIT_SUBMODULE)
-#         message(STATUS "Submodule update")
-#         execute_process(COMMAND ${GIT_EXECUTABLE} submodules update --init --recursive WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} RESULT_VARIABLE GIT_SUBMOD_RESULT)
-#     endif()
+# set(OpenGL_GL_PREFERENCE "GLVND")
+# find_package(OpenGL REQUIRED COMPONENTS OpenGL)
+# if(OPENGL_FOUND)
+#     message("Found OpenGL in the current environment!")
+# else()
+#     message("Error: No OpenGL found.")
 # endif()
-
-# #               CHECK ALL THE SUBMODULES
-# if(NOT EXISTS "${PROJECT_SOURCE_DIR}/external/glfw/CMakeLists.txt")
-#     message(FATAL_ERROR "The glfw submodules was nod downloaded! GIT_SUBMODULE was turned off or failed. Please update sobmodule and try again.")
-# endif()
+# message("OpenGL include dirs: " )
+# message("\tdir: ${OPENGL_INCLUDE_DIR}")
+# message("\tlib: ${OPENGL_LIBRARIES} ")
 
 add_executable(${PROJECT_NAME} main.cpp)
-add_subdirectory(external/glfw)
+add_subdirectory(
+    external/glfw
+    external/glad
+)
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/include
+    PUBLIC external/glad/include
+    # ${OPENGL_INCLUDE_DIRS}
 )
 
 target_link_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/src
+    PUBLIC external/glad
 )
 
 target_link_libraries(${PROJECT_NAME} 
     glfw
+    glad
+    # ${OPENGL_LIBRARIES}
 )
