@@ -10,12 +10,9 @@ project(CocoEngine VERSION 0.1.0)
 # message("OpenGL include dirs: " )
 # message("\tdir: ${OPENGL_INCLUDE_DIR}")
 # message("\tlib: ${OPENGL_LIBRARIES} ")
-find_library( GLUT_glut_LIBRARY NAMES glut glut32 freeglut
-    PATHS
-    ${OPENGL_LIBRARY_DIR}
-    ${GLUT_ROOT_PATH}/Release
-    )
+
 add_executable(${PROJECT_NAME} main.cpp)
+# find_package(OpenGL REQUIRED)
 add_subdirectory(
     external/glfw
     external/glad
@@ -23,17 +20,15 @@ add_subdirectory(
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/include
-    # PUBLIC external/glad/include
-    # ${OPENGL_INCLUDE_DIRS}
+    PUBLIC external/glad/include
 )
 
 target_link_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/src
-    # PUBLIC external/glad
+    PUBLIC external/glad/src
 )
 
 target_link_libraries(${PROJECT_NAME} 
     glfw
-    # glad
-    # ${OPENGL_LIBRARIES}
+    glad
 )
