@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <glad/gl.h>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 const GLuint WIDTH = 800, HEIGHT = 600;
@@ -40,9 +40,6 @@ int main(void)
     glfwMakeContextCurrent(window);
 
     glfwSetKeyCallback(window, key_callback);
-
-    int version = gladLoadGL(glfwGetProcAddress);
-    printf("GL %d.%d\n", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
 
     while (!glfwWindowShouldClose(window))
     {
