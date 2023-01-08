@@ -1,6 +1,6 @@
 #include <iostream>
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <GL/freeglut.h>
 
 // Vertex Shader source code
 const char* vertexShaderSource = "#version 330 core\n"
