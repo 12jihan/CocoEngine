@@ -1,5 +1,4 @@
 #pragma once
-#define SHADER_CLASS_H
 
 #include <glad/glad.h>
 #include <string>
@@ -13,7 +12,7 @@ std::string get_file_contents(const char *filename);
 class Shader {
     public:
         GLuint ID;
-        Shader(onst char* vertexFile, const char* fragmentFile);
+        Shader(const char* vertexFile, const char* fragmentFile);
 
         void Activate();
         void Delete();
