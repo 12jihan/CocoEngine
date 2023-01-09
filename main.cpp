@@ -68,25 +68,36 @@ int main(int argc, char const *argv[])
     glDeleteShader(fragmentShader);
 
      GLfloat vertices[] = {
-        -0.5f,   -0.5f * float(sqrt(3)) / 3,     0.0f,
-         0.5f,   -0.5f * float(sqrt(3)) / 3,     0.0f, 
-         0.0f,    0.5f * float(sqrt(3)) * 2 / 3, 0.0f,
+        -0.5f,       -0.5f * float(sqrt(3)) / 3,     0.0f, // Lower left corner
+         0.5f,       -0.5f * float(sqrt(3)) / 3,     0.0f, // Lower right corner
+         0.0f,        0.5f * float(sqrt(3)) * 2 / 3, 0.0f, // Upper corner
+        -0.5f / 2,    0.5f * float(sqrt(3)) / 6,     0.0f, // Inner left
+         0.5f / 2,    0.5f * float(sqrt(3)) / 6,     0.0f, // Iner right
+         0.0f,       -0.5f * float(sqrt(3)) / 3,     0.0f, // Inner down
+    };
+
+    GLuint indices[] = {
+        0, 3, 5, // Lower left triangle
+        3, 2, 4, // Lower right triangle
+        5, 4, 1  // Upper triangle
     };
 
     //~~ Creating Buffers:
-    GLuint vao, vbo;
+    GLuint vao, vbo, ebo;
 
     glGenVertexArrays(1, &vao);
-    // Creating 1 Buffer object for vbo:
     glGenBuffers(1, &vbo);
+    glGenBuffers(1, &ebo);
 
     // bind vao:
     glBindVertexArray(vao);
-
-    // Binding to make the current(binded) object visible:
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
     // store vertices in the vbo:
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // communicate with the vertex shader from the outside:
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
@@ -94,6 +105,7 @@ int main(int argc, char const *argv[])
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 
     // Add window into the program:
@@ -102,11 +114,11 @@ int main(int argc, char const *argv[])
     // Loop for the frames:
     while (!glfwWindowShouldClose(window))
     {
-        glClearColor(1.0f, 0.13f, 0.17f, 1.0f);
+        glClearColor(0.10f, 0.13f, 0.17f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(shaderProgram);
         glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
         glfwSwapBuffers(window);
         // Gets all events happening to the window:
         glfwPollEvents();
@@ -115,6 +127,7 @@ int main(int argc, char const *argv[])
 
     glDeleteVertexArrays(1, &vao);
     glDeleteBuffers(1, &vbo);
+    glDeleteBuffers(1, &ebo);
     glDeleteProgram(shaderProgram);
 
     glfwDestroyWindow(window);
