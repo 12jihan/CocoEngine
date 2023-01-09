@@ -3,7 +3,7 @@ project(CocoEngine VERSION 0.1.0)
 
 
 add_executable(${PROJECT_NAME} 
-    src/Main.cpp
+    src/main.cpp
     src/glad.c
     src/Shader.cpp
     src/VAO.cpp
