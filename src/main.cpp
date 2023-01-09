@@ -3,6 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <math.h>
+#include <stb/stb_image.h>
 
 #include "headers/Shader.h"
 #include "headers/VAO.h"

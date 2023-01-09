@@ -9,16 +9,18 @@ add_executable(${PROJECT_NAME}
     src/VAO.cpp
     src/VBO.cpp
     src/EBO.cpp
+    src/stb.cpp
 )
 
 add_subdirectory(
     external/glfw
     external/glad
-)
+    )
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/include
     PUBLIC external/glad/include
+    PUBLIC external/stb/include
 )
 
 target_link_directories(${PROJECT_NAME} 
