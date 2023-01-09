@@ -2,7 +2,7 @@
 #include <fstream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <math.h>\
+#include <math.h>
 
 #include "headers/Shader.h"
 #include "headers/VAO.h"
@@ -11,13 +11,13 @@
 
 // Vertices coordinates
 GLfloat vertices[] =
-	{
-		-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,	// Lower left corner
-		0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,		// Lower right corner
-		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f,	// Upper corner
-		-0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f, // Inner left
-		0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f,	// Inner right
-		0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f		// Inner down
+{
+	-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,	// Lower left corner
+	0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,		// Lower right corner
+	0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f,	// Upper corner
+	-0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f, // Inner left
+	0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f,	// Inner right
+	0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f		// Inner down
 };
 
 // Indices for vertices order
@@ -28,18 +28,8 @@ GLuint indices[] =
 		5, 4, 1	 // Upper triangle
 };
 
-void loadShaders()
-{
-	std::string stuff;
-	std::fstream in_file;
-	in_file.open("./vertex_core.glsl");
-	in_file >> stuff;
-	std::cout << stuff << std::endl;
-};
-
 int main()
 {
-	loadShaders();
 	// Initialize GLFW
 	glfwInit();
 
@@ -70,7 +60,7 @@ int main()
 	glViewport(0, 0, 800, 800);
 
 	// Generates Shader object using shaders defualt.vert and default.frag
-	Shader shaderProgram("vertex_core.glsl", "fragment_core.glsl");
+	Shader shaderProgram("../../src/shaders/vertex_core.glsl", "../../src/shaders/fragment_core.glsl");
 
 	// Generates Vertex Array Object and binds it
 	VAO VAO1;

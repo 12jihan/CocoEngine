@@ -3,12 +3,8 @@
 std::string get_file_contents(const char *filename)
 {
 	std::ifstream in(filename, std::ios::binary);
-	std::cout << "\n"
-			  << "Problem here: " << filename << "\n"
-			  << std::endl;
 	if (in)
 	{
-		std::cout << "\nworks" << std::endl;
 		std::string contents;
 		in.seekg(0, std::ios::end);
 		contents.resize(in.tellg());
