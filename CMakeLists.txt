@@ -3,9 +3,10 @@ project(CocoEngine VERSION 0.1.0)
 
 
 add_executable(${PROJECT_NAME} 
-    main.cpp 
-    external/glad/src/glad.c
+    src/main.cpp
+    src/glad
 )
+
 add_subdirectory(
     external/glfw
     external/glad
@@ -18,7 +19,7 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/src
-    PUBLIC external/glad/src
+    PUBLIC src/glad
 )
 
 target_link_libraries(${PROJECT_NAME} 
