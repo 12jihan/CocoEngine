@@ -24,12 +24,11 @@ int main(int argc, char const *argv[])
 
     glClearColor(1.0f, 0.13f, 0.17f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+    glfwSwapBuffers(window);
+
     while(!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
-
-
-        glfwSwapBuffers(window);
     }
 
     glfwDestroyWindow(window);
