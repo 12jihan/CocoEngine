@@ -3,8 +3,8 @@ project(CocoEngine VERSION 0.1.0)
 
 
 add_executable(${PROJECT_NAME} 
-    src/main.cpp 
-    src/glad/glad.c
+    src/main.cpp
+    src/glad
 )
 
 add_subdirectory(

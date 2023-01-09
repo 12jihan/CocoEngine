@@ -1,8 +1,8 @@
-#include "./headerfiles/ShaderClass.h"
+#include "./headers/Shader.h"
 
 std::string get_file_contents(const char* filename) {
     std::ifstream in (filename, std::ios::binary);
-    if(n) {
+    if(in) {
         std::string contents;
         in.seekg(0, std::ios::end);
         contents.resize(in.tellg());
