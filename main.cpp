@@ -21,9 +21,15 @@ int main(int argc, char const *argv[])
     gladLoadGL();
 
     glViewport(0, 0, 800, 800);
+
+    glClearColor(1.0f, 0.13f, 0.17f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
     while(!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
+
+
+        glfwSwapBuffers(window);
     }
 
     glfwDestroyWindow(window);
