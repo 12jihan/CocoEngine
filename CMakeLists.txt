@@ -16,11 +16,12 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC external/glad/include
 )
 
-link_directories(${PROJECT_NAME} 
+target_link_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/src
     PUBLIC external/glad/src
 )
 
 target_link_libraries(${PROJECT_NAME} 
     glfw
+    # glad
 )
