@@ -10,20 +10,22 @@ file(GLOB INC_SRC
     external/glm
 )
 
+file(GLOB HEADER_FILES
+    src/headers/*.h
+)
+
+file(GLOB ALL_CLASSES
+    src/*.c
+    src/*.cpp
+)
+
 # file(GLOB SUB_DIR 
 #     external/glfw
 #     external/glad
 # )
 
 add_executable(${PROJECT_NAME} 
-    src/main.cpp
-    src/glad.c
-    src/Texture.cpp
-    src/Shader.cpp
-    src/VAO.cpp
-    src/VBO.cpp
-    src/EBO.cpp
-    src/stb.cpp
+    ${ALL_CLASSES}
 )
 
 add_subdirectory(
