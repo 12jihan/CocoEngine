@@ -3,6 +3,17 @@ project(CocoEngine VERSION 0.1.0)
 
 file(COPY src/resources DESTINATION ${CMAKE_BINARY_DIR}) 
 file(COPY src/shaders DESTINATION ${CMAKE_BINARY_DIR}) 
+file(GLOB INC_SRC
+    external/glfw/include
+    external/glad/include
+    external/stb/include
+    external/glm
+)
+
+# file(GLOB SUB_DIR 
+#     external/glfw
+#     external/glad
+# )
 
 add_executable(${PROJECT_NAME} 
     src/main.cpp
@@ -20,10 +31,14 @@ add_subdirectory(
     external/glad
     )
 
+# target_include_directories(${PROJECT_NAME} 
+#     PUBLIC external/glfw/include
+#     PUBLIC external/glad/include
+#     PUBLIC external/stb/include
+# )
+
 target_include_directories(${PROJECT_NAME} 
-    PUBLIC external/glfw/include
-    PUBLIC external/glad/include
-    PUBLIC external/stb/include
+    PUBLIC ${INC_SRC}
 )
 
 target_link_directories(${PROJECT_NAME} 
@@ -32,5 +47,4 @@ target_link_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} 
     glfw
-    # glad
 )
