@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(CocoEngine VERSION 0.1.0)
 
+file(COPY src/resources DESTINATION ${CMAKE_BINARY_DIR}) 
+file(COPY src/shaders DESTINATION ${CMAKE_BINARY_DIR}) 
 
 add_executable(${PROJECT_NAME} 
     src/main.cpp
     src/glad.c
+    src/Texture.cpp
     src/Shader.cpp
     src/VAO.cpp
     src/VBO.cpp
