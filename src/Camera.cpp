@@ -1,10 +1,11 @@
-#include "headers/Camera.h"
+#include "./headers/Camera.h"
 
 Camera::Camera(int width, int height, glm::vec3 position)
 {
 	Camera::width = width;
 	Camera::height = height;
 	Position = position;
+	
     speed = 0.08f;
     sensitivity = 3.0f;
 }
