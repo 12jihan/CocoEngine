@@ -137,7 +137,7 @@ int main()
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
 	glm::mat4 lightModel = glm::mat4(1.0f);
 	lightModel = glm::translate(lightModel, lightPos);
-	
+
 	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::mat4 objectModel = glm::mat4(1.0f);
 	objectModel = glm::translate(objectModel, objectPos);
