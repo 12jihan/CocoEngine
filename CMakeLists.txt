@@ -8,6 +8,7 @@ file(GLOB INC_SRC
     external/glad/include
     external/stb/include
     external/glm
+    external/json/include
 )
 
 file(GLOB HEADER_FILES
