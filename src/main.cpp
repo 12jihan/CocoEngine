@@ -3,8 +3,8 @@
 #include "./headers/Mesh.h"
 #include "./headers/Model.h"
 
-const unsigned int width = 800;
-const unsigned int height = 800;
+const unsigned int width = 1920;
+const unsigned int height = 1080;
 
 
 int main()
@@ -47,7 +47,7 @@ int main()
 
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
+	glm::vec3 lightPos = glm::vec3(1.0f, 1.0f, 1.0f);
 	glm::mat4 lightModel = glm::mat4(1.0f);
 	lightModel = glm::translate(lightModel, lightPos);
 
