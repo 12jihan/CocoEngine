@@ -9,6 +9,7 @@ file(GLOB INC_SRC
     external/stb/include
     external/glm
     external/json/include
+    external/assimp/include
 )
 
 file(GLOB HEADER_FILES
