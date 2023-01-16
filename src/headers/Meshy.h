@@ -1,3 +1,13 @@
+#pragma once
+#include <glad/glad.h>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include "Shader.h"
+
 struct Vertex {
     glm::vec3 Position;
     glm::vec3 Normal;
@@ -12,11 +22,11 @@ struct Texture {
 class Meshy {
     public:
         // mesh data
-        vector<Vertex>  vertices;
-        vector<unsigned int> indices;
-        vector<Texture> textures;
+        std::vector<Vertex>  vertices;
+        std::vector<unsigned int> indices;
+        std::vector<Texture> textures;
     
-        Meshy(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures);
+        Meshy(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
         void Draw(Shader &shader);
     private:
         // render data
