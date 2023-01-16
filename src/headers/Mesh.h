@@ -1,32 +1,36 @@
 #pragma once
+#include <glad/glad.h>
+#include <string>
+#include <fstream>
+#include <sstream>
 #include <vector>
-#include<string>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include "Shader.h"
 
-#include"VAO.h"
-#include"EBO.h"
-#include"Camera.h"
-#include"Texture.h"
+struct Vertex {
+    glm::vec3 Position;
+    glm::vec3 Normal;
+    glm::vec3 TexCoords;
+};
 
-class Mesh
-{
-public:
-	std::vector <Vertex> vertices;
-	std::vector <GLuint> indices;
-	std::vector <Texture> textures;
-	// Store VAO in public so it can be used in the Draw function
-	VAO xVAO;
+struct Texture {
+    unsigned int id;
+    std::string type;
+};
 
-	// Initializes the mesh
-	Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::vector <Texture>& textures);
+class Mesh {
+    public:
+        // mesh data
+        std::vector<Vertex>  vertices;
+        std::vector<unsigned int> indices;
+        std::vector<Texture> textures;
+    
+        Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
+        void Draw(Shader &shader);
+    private:
+        // render data
+        unsigned int VAO, VBO, EBO;
 
-	// Draws the mesh
-	void Draw
-	(
-		Shader& shader, 
-		Camera& camera,
-		glm::mat4 matrix = glm::mat4(1.0f),
-		glm::vec3 translation = glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::quat rotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f),
-		glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f)
-	);
+        void setupMesh();
 };
